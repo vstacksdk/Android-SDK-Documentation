@@ -363,22 +363,22 @@ VStackCallListener
 vStackClient.setCallListener(new VStackCallListener() {
     @Override
     public void onCallDuration(int callId, String vStackUserId, long duration) {
-	Log.d("Duration", vStackUserId +"--"+ duration); // lắng nghe sự kiện tổng thời gian cuộc gọi
+	Log.d("Duration", vStackUserId +"--"+ duration); // lắng nghe sự kiện tổng thời gian cuộc gọi voice/video
     }
 
     @Override
     public void onCallRinging(int callId, String vStackUserId, int status) {
-	Log.d("Ringing", vStackUserId +"--"+ status); // lắng nghe sự kiện khi đổ chuông
+	Log.d("Ringing", vStackUserId +"--"+ status); // lắng nghe sự kiện khi đổ chuông voice/video
     }
 
     @Override
     public void onCallAnswer(int callId, String vStackUserId, int status) {
-	Log.d("Answer", vStackUserId +"--"+ status); // lắng nghe sự kiện khi có người bắt máy
+	Log.d("Answer", vStackUserId +"--"+ status); // lắng nghe sự kiện khi có người bắt máy voice/video
     }
 
     @Override
     public void onCallEnd(int callId, String vStackUserId, int status) {
-	Log.d("End", vStackUserId +"--"+ status); / lắng nghe sự kiện khi kết thúc cuộc gọi
+	Log.d("End", vStackUserId +"--"+ status); / lắng nghe sự kiện khi kết thúc cuộc gọi voice/video
     }
 });
 ```

@@ -356,6 +356,33 @@ vStackClient.registerUserListener(new VStackUserListener() {
 
 In the getUserInfo(List<String> vStackUserIds, int purpose) method, you need return users'information (including vStackUserId, name, avatar) equivalent to the list vStackUserIds via JSONArray. At the end of this medthod, you must call vStackClient.getUserInfoComplete(arrayContact, purpose) method. These information will be displayed on chat, call screen. You can check the sample for more detail how to implement this method.
 
+### 3.5 VStackCallListener
+VStackCallListener
+
+```
+vStackClient.setCallListener(new VStackCallListener() {
+    @Override
+    public void onCallDuration(int callId, String vStackUserId, long duration) {
+	Log.d("Duration", vStackUserId +"--"+ duration);
+    }
+
+    @Override
+    public void onCallRinging(int callId, String vStackUserId, int status) {
+	Log.d("Ringing", vStackUserId +"--"+ status);
+    }
+
+    @Override
+    public void onCallAnswer(int callId, String vStackUserId, int status) {
+	Log.d("Answer", vStackUserId +"--"+ status);
+    }
+
+    @Override
+    public void onCallEnd(int callId, String vStackUserId, int status) {
+	Log.d("End", vStackUserId +"--"+ status);
+    }
+});
+```
+
 # 4. API
 ### 4.1 Chat with a user
 ```

@@ -383,6 +383,18 @@ vStackClient.setCallListener(new VStackCallListener() {
 });
 ```
 
+### 3.5 VStackMakeChatGroupListener
+VStackMakeChatGroupListener
+
+```
+vStackClient.setVStackMakeChatGroupListener(new VStackMakeChatGroupListener() {
+    @Override
+    public void onMakeChatGroupComplete(int r, int groupId, String groupName, List<VStackContact> azStackContacts) {
+  
+    }
+});
+```
+
 # 4. API
 ### 4.1 Chat with a user
 ```

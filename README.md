@@ -383,13 +383,13 @@ vStackClient.setCallListener(new VStackCallListener() {
 });
 ```
 
-### 3.5 VStackMakeChatGroupListener
+### 3.6 VStackMakeChatGroupListener
 VStackMakeChatGroupListener
 
 ```
 vStackClient.setVStackMakeChatGroupListener(new VStackMakeChatGroupListener() {
     @Override
-    public void onMakeChatGroupComplete(int r, int groupId, String groupName, List<VStackContact> azStackContacts) {
+    public void onMakeChatGroupComplete(int r, int groupId, String groupName, List<VStackContact> vStackContacts) {
   
     }
 });
@@ -465,6 +465,22 @@ Disconnect from VStack server and clear all cached data on client
 ```
 vStackClient.logout();
 ```
+
+### 4.9 Create a chat group with fragment (VstackChatGroupFragment)
+
+
+```
+VStackClient.getInstance().createGroupWithChatFragment(Context context);
+```
+Parameter: 	context: The context to create group, required
+
+When creating a new group chat successfully, have groupId in listener 3.6. After you call this method
+```
+startWithChatGroupFragment(Context context, int groupId, Class cls)
+```
+Parameter: 	context: The context to create group, required
+		groupId: The id of Group, required
+		cls: The Class add VstackChatGroupFragment ,required
 
 # 5. Push notification
 ### 5.1 Create API project

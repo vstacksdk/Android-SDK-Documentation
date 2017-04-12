@@ -408,22 +408,24 @@ Parameter: 	context: The context to start chat, required
 
 ### 4.2 Call to a user
 ```
-vStackClient.startCall(Context context, String vStackUserId, String name, String avatar);
+vStackClient.startCall(Context context, String vStackUserId, String name, String avatar, long time);
 
 Parameter: 	context: The context to start call, required
 			vStackUserId: identifier of app’s user, required
 			name: name of app’s user, default “No name”, optional
 			avatar: avatar of app’s user, optional
+			time: time call limit, // if time = 0 no limit, time # 0 limit
 ```
 
 ### 4.3 Video call to a user
 ```
-vStackClient.startVideoCall(Context context, String vStackUserId, String name, String avatar);
+vStackClient.startVideoCall(Context context, String vStackUserId, String name, String avatar, long time);
 
 Parameter: 	context: The context to start call, required
 			vStackUserId: identifier of app’s user, required
 			name: name of app’s user, default “No name”, optional
 			avatar: avatar of app’s user, optional
+			time: time call limit, // if time = 0 no limit, time # 0 limit
 ```
 
 ### 4.4 Create a chat group

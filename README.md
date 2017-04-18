@@ -404,6 +404,7 @@ vStackClient.setVStackMakeChatGroupListener(new VStackMakeChatGroupListener() {
 Call log 
 
 ```
+add fragment VStackRecentFragment()
 ```
 
 # 4. API

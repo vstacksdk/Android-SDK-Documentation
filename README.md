@@ -196,7 +196,12 @@ The VStack SDK requires some permissions and references (activities, gcm receive
             android:name="com.vht.activity.StickerListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/VStackTheme.Light"></activity>
-		
+	<activity
+            android:name="com.vht.activity.RecentDetailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/VStackTheme.Light" />
+
 		<!-- VStack activities-->
 
 		<!-- VStack meta-data-->
@@ -393,6 +398,12 @@ vStackClient.setVStackMakeChatGroupListener(new VStackMakeChatGroupListener() {
   
     }
 });
+```
+
+### 3.7 VStackRecentFragment
+Call log 
+
+```
 ```
 
 # 4. API

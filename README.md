@@ -201,7 +201,12 @@ The VStack SDK requires some permissions and references (activities, gcm receive
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/VStackTheme.Light" />
-
+        <activity
+            android:name="com.vht.activity.CallOutSentActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/VStackTheme.Light" />
+	    
 		<!-- VStack activities-->
 
 		<!-- VStack meta-data-->
@@ -440,7 +445,18 @@ Parameter: 	context: The context to start call, required
 			time: time call limit, // if time = 0 no limit, time # 0 limit
 ```
 
-### 4.4 Create a chat group
+### 4.4 Callout to a user
+```
+vStackClient..startCallOut(Context context, String vStackUserId, String name, String avatar, String phoneNumber);
+
+Parameter: 	context: The context to start call, required
+			vStackUserId: identifier of app’s user, required
+			name: name of app’s user, default "No name", optional
+			avatar: avatar of app’s user, optional
+			phoneNumber: The number phone of app's user,required
+```
+
+### 4.5 Create a chat group
 ```
 vStackClient.createGroup(Context context);
 
@@ -449,14 +465,14 @@ Parameter: 	context: The context to create group, required
 When creating a new group chat, the app navigates to select users screen. To make this screen work fine, you must implement the method getListFriend() of VStackUserListener when initialize VStack service. 
 In getListFriend() method, the information of users (who you want to add to the group) is returned via JSONArray object. You can check the sample for more detail how to implement this method.
 
-### 4.5 Update user's information
+### 4.6 Update user's information
 Update your info for push notification
 
 ```
 vStackClient.updateMyInfo(newName);
 ```
 
-### 4.6 Chat history
+### 4.7 Chat history
 To show chat history, you can call this method
 
 ```
@@ -466,21 +482,21 @@ vStackClient.viewChatHistory(Context context);
 or use VStackConversationFragment in your application.
 Important: if you use VStackConversationFragment in your application, you must initialize VStackClient object before using.
 
-### 4.7 Disconnect
+### 4.8 Disconnect
 Disconnect from VStack server
 
 ```
 vStackClient.disconnect();
 ```
 
-### 4.8 Logout
+### 4.9 Logout
 Disconnect from VStack server and clear all cached data on client
 
 ```
 vStackClient.logout();
 ```
 
-### 4.9 Create a chat group with fragment (VstackChatGroupFragment)
+### 4.10 Create a chat group with fragment (VstackChatGroupFragment)
 
 
 ```

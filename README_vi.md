@@ -196,7 +196,17 @@ The VStack SDK requires some permissions and references (activities, gcm receive
             android:name="com.vht.activity.StickerListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/VStackTheme.Light"></activity>
-		
+        <activity
+            android:name="com.vht.activity.RecentDetailActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/VStackTheme.Light" />
+	<activity
+            android:name="com.vht.activity.CallOutSentActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/VStackTheme.Light" />		
+	    
 		<!-- VStack activities-->
 
 		<!-- VStack meta-data-->
@@ -383,6 +393,25 @@ vStackClient.setCallListener(new VStackCallListener() {
 });
 ```
 
+### 3.6 VStackMakeChatGroupListener
+VStackMakeChatGroupListener
+
+```
+vStackClient.setVStackMakeChatGroupListener(new VStackMakeChatGroupListener() {
+    @Override
+    public void onMakeChatGroupComplete(int r, int groupId, String groupName, List<VStackContact> vStackContacts) {
+  
+    }
+});
+```
+
+### 3.7 VStackRecentFragment
+Call log 
+
+```
+add fragment VStackRecentFragment()
+```
+
 # 4. API
 ### 4.1 Chat with a user
 ```
@@ -416,7 +445,18 @@ Parameter: 	context: The context to start call, required
 			time: time call limit, // if time = 0 no limit, time # 0 limit
 ```
 
-### 4.4 Create a chat group
+### 4.4 Callout to a user
+```
+vStackClient..startCallOut(Context context, String vStackUserId, String name, String avatar, String phoneNumber);
+
+Parameter: 	context: The context to start call, required
+			vStackUserId: identifier of app’s user, required
+			name: name of app’s user, default "No name", optional
+			avatar: avatar of app’s user, optional
+			phoneNumber: The number phone of app's user,required
+```
+
+### 4.5 Create a chat group
 ```
 vStackClient.createGroup(Context context);
 
@@ -425,14 +465,14 @@ Parameter: 	context: The context to create group, required
 When creating a new group chat, the app navigates to select users screen. To make this screen work fine, you must implement the method getListFriend() of VStackUserListener when initialize VStack service. 
 In getListFriend() method, the information of users (who you want to add to the group) is returned via JSONArray object. You can check the sample for more detail how to implement this method.
 
-### 4.5 Update user's information
+### 4.6 Update user's information
 Update your info for push notification
 
 ```
 vStackClient.updateMyInfo(newName);
 ```
 
-### 4.6 Chat history
+### 4.7 Chat history
 To show chat history, you can call this method
 
 ```
@@ -442,7 +482,7 @@ vStackClient.viewChatHistory(Context context);
 or use VStackConversationFragment in your application.
 Important: if you use VStackConversationFragment in your application, you must initialize VStackClient object before using.
 
-### 4.7 Disconnect
+### 4.8 Disconnect
 Disconnect from VStack server
 
 ```
@@ -456,6 +496,22 @@ Disconnect from VStack server and clear all cached data on client
 vStackClient.logout();
 ```
 
+### 4.10 Create a chat group with fragment (VstackChatGroupFragment)
+
+
+```
+VStackClient.getInstance().createGroupWithChatFragment(Context context);
+```
+Parameter: 	context: The context to create group, required
+
+When creating a new group chat successfully, have groupId in listener 3.6. After you call this method
+```
+startWithChatGroupFragment(Context context, int groupId, Class cls)
+```
+Parameter: 	context: The context to create group, required
+		groupId: The id of Group, required
+		cls: The Class add VstackChatGroupFragment ,required
+		
 # 5. Push notification
 ### 5.1 Create API project
 We're using new Google Cloud Messaging for push notification. So you must create a Firebase project in the Firebase console for new Cloud Messaging projects.
